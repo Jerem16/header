@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import metaData from "./metaData";
 import localFont from "next/font/local";
 import "../src/assets/styles/main.scss";
-import { SearchProvider } from "../src/utils/context/SearchContext";
+import { SearchProvider } from "@/src/utils/context/SearchContext";
 import { Suspense } from "react";
 import HeaderProps from "./headerProps";
 import ScrollProvider from "../src/utils/context/ScrollContext";

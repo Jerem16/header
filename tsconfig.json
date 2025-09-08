@@ -43,7 +43,8 @@
         "src/**/*.ts",
         "src/**/*.tsx",
         "public/**/*.json",
-        ".next/types/**/*.ts"
-, "src/components/frames/Frames.jsx"    ],
+        ".next/types/**/*.ts",
+        "src/components/frames/Frames.jsx"
+    ],
     "exclude": ["node_modules", ".next", "dist"]
 }
