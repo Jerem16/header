@@ -1,21 +1,20 @@
-import { Metadata } from "next";
-export const metadata: Metadata = {
-    title: "Accueil | Peur de la conduite",
-};
+import Frames from "@/src/components/frames/Frames";
 
 export default function Home() {
     return (
         <>
-            <section className="section slider-bg" id="slider"></section>
-            <section className="section about-bg" id="about">
-                <div className="fixed-menu"></div>
-            </section>
-            <section className="section" id="services">
-                <div className="fixed-menu"></div>
-            </section>
-            <section className="section" id="contact">
-                <div className="fixed-menu"></div>
-            </section>
+            <Frames className="section slider-bg" id="slider">
+                <></>
+            </Frames>
+            <Frames className="section about-bg" id="about">
+                <></>
+            </Frames>
+            <Frames className="section" id="services">
+                <></>
+            </Frames>
+            <Frames className="section" id="contact">
+                <></>
+            </Frames>
         </>
     );
 }

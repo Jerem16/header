@@ -1,8 +1,14 @@
 "use client";
 
 // SearchContext.tsx
-import React, { createContext, useContext, useState, useEffect, useMemo } from "react";
-import { initializeMenuWithContent } from "../../utils/initializeMenu";
+import React, {
+    createContext,
+    useContext,
+    useState,
+    useEffect,
+    useMemo,
+} from "react";
+import { initializeMenuWithContent } from "../initializeMenu";
 import { MenuLinks } from "@assets/data/interfaces/menu";
 
 // Définir le type pour SearchContext
@@ -23,7 +29,9 @@ interface SearchContextType {
 
 const SearchContext = createContext<SearchContextType | undefined>(undefined);
 
-export const SearchProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const SearchProvider: React.FC<{ children: React.ReactNode }> = ({
+    children,
+}) => {
     const [results, setResults] = useState<Result[]>([]);
     const [menuData, setMenuData] = useState<MenuLinks | null>(null);
     const [query, setQuery] = useState(""); // Ajout de query ici
@@ -38,7 +46,11 @@ export const SearchProvider: React.FC<{ children: React.ReactNode }> = ({ childr
         [results, setResults, menuData, query] // Ajouter query comme dépendance
     );
 
-    return <SearchContext.Provider value={contextValue}>{children}</SearchContext.Provider>;
+    return (
+        <SearchContext.Provider value={contextValue}>
+            {children}
+        </SearchContext.Provider>
+    );
 };
 
 export const useSearch = (): SearchContextType => {

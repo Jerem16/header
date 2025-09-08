@@ -1,12 +1,27 @@
 .section {
     width: 100%;
-    height: calc(100% - 90px);
+    min-height: calc(100vh);
+    display: block;
 }
-#profile {
-    background: linear-gradient(#7551c2, #fff);
+#expert,
+#slider {
+    background: linear-gradient(#c2be51, #fff);
+}
+#about {
+    background: linear-gradient(#62c251, #fff);
+}
+#novice,
+#services {
+    background: linear-gradient(#516dc2, #fff);
+}
+#contact {
+    background: linear-gradient(#9951c2, #fff);
 }
 
-#connexion {
-    min-height: 100vh;
-    background: rgb(255, 177, 33);
+#sans-permis {
+    background: linear-gradient(#c2518a, #fff);
+}
+#expert,
+#avec-permis {
+    background: linear-gradient(#51c264, #fff);
 }
