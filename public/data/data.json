@@ -1,0 +1,259 @@
+{
+    "sections": [
+        {
+            "id": "S1",
+            "slug": "bienvenue-sur-mon-blog-decouvrez-une-serie-d-articles-pour-vous-aider-a-surmonter-la-peur-de-conduire",
+            "title": "Bienvenue sur mon blog ! Découvrez une série d’articles pour vous aider à surmonter la peur de conduire.",
+            "description": "Découvrez sans plus attendre une série d’articles dédiée à la peur de conduire ! Conseils, astuces et témoignages pour prendre la route en toute confiance.",
+            "order": 1,
+            "postIds": ["P1", "P2", "P3"],
+            "seo": {
+                "title": "",
+                "description": "",
+                "image": ""
+            },
+            "createdAt": "2025-05-25T14:31:19.491Z",
+            "updatedAt": "2025-06-25T11:08:28.958Z",
+            "relatedPostIds": []
+        },
+        {
+            "id": "S2",
+            "slug": "",
+            "title": "",
+            "description": "",
+            "order": 2,
+            "postIds": [],
+            "seo": {
+                "title": "",
+                "description": "",
+                "image": ""
+            },
+            "createdAt": "2025-08-03T16:46:58.183Z",
+            "updatedAt": "2025-08-03T16:46:58.183Z",
+            "relatedPostIds": []
+        },
+        {
+            "id": "S3",
+            "slug": "",
+            "title": "",
+            "description": "",
+            "order": 3,
+            "postIds": [],
+            "seo": {
+                "title": "",
+                "description": "",
+                "image": ""
+            },
+            "createdAt": "2025-08-03T17:05:27.041Z",
+            "updatedAt": "2025-08-03T17:05:27.041Z",
+            "relatedPostIds": []
+        }
+    ],
+    "posts": [
+        {
+            "id": "P1",
+            "slug": "apprivoiser-la-peur-pour-mieux-progresser-au-volant",
+            "title": "Apprivoiser la peur pour mieux progresser au volant",
+            "excerpt": "Mes techniques pour transformer un traumatisme lié à l’échec en un moteur  pour vaincre la peur de conduire, gagner en assurance et progresser au volant.",
+            "content": "## Les cicatrices d’un échec qui freine\nUn échec en conduite peut laisser une marque profonde, nourrissant un sentiment d’impuissance. Ces cicatrices psychologiques déclenchent des réflexes de protection qui amplifient la peur de la conduite. Le stress ainsi accumulé s’immisce dans chaque geste au volant et génère inévitablement des erreurs.\n\n## Dévoiler les zones d’ombre techniques\nLes défis techniques, comme le maintien de la trajectoire ou le freinage progressif, deviennent rapidement intimidants sous l’effet du stress. Sans une maîtrise guidée, un virage peut se transformer en une situation difficile et biaiser votre concentration.\n\n## Se sentir en confiance avant de démarrer\nAvant même de prendre le volant, une gestion adaptée du stress (pré-examen) permet de poser des bases sereines. La conduite accompagnée et des exercices de concentration personnalisés vous aiderons à canaliser votre énergie et à aborder chaque manœuvre sans appréhension.\n\n## Stimuler votre progression par l’action\n1. Planifiez des **sessions régulières** de conduite accompagnée  \n2. Alternez entre **exercices techniques** et **simulations de stress**  \n3. Suivez votre évolution avec un **diagnostic personnalisé**  \n\n## Se projeter vers des routes sereines\nEn créant un plan de perfectionnement adapté, vous transformez chaque sortie en opportunité de victoire sur votre amaxophobie. Rapidement, vous constaterez des progrès tangibles et prendrez plaisir à redécouvrir la route sans crainte.",
+            "authorId": "A1",
+            "sectionIds": ["", "S1"],
+            "relatedPostIds": [],
+            "videoUrl": "https://www.youtube.com/shorts/lqFs7kJK0Gg",
+            "subtitleSource": "L'échec est souvent vécu comme un traumatisme. Il va générer des mécanismes de protection pour éviter que ça se reproduise. Ces mécanismes de protection vont générer forcément du stress. Yeah.Le doute va commencer à s'imisser dans toutes ces actions et va générer forcément des erreurs.",
+            "generatedPrompt": "Tu es un rédacteur expert en blogging pédagogique sur la conduite et la gestion du stress au volant.\n  Intègre, sans jamais les énumérer, les services suivants :\n  - Gestion du stress avant examen\\n- Gestion des situations de conduite difficiles\\n- Conduite accompagnée ou supervisée\\n- Coaching Concentration\\n- Maîtrise de la trajectoire\\n- Peur de la conduite (Amaxophobie)\\n- Perfectionnement de la Conduite\n  \n  À partir du texte source ci-dessous, renvoie **uniquement** un objet JSON valide ayant les clés :\n  \n  - **title**   : titre accrocheur  \n  - **excerpt** : phrase d’accroche (≤ 150 caractères)  \n  - **content** : corps de l’article au format Markdown avec **cinq** sections. Pour chaque section :  \n    - un titre de niveau 2 vraiment personnalisé ; il **ne doit contenir** aucun des mots suivants : « Introduction », « Causes », « Conseils », « Conclusion ».  \n      *Exemple :* `## Des premiers tours de roue en toute sérénité`  \n    - immédiatement après, un paragraphe de 2 à 3 phrases qui développe l’idée.  \n  - **tags**    : tableau de mots-clés  \n  - **seo**     :  \n    - **title**       (≤ 60 caractères)  \n    - **description** (≤ 155 caractères)\n  \n  **Ordre sémantique à suivre dans _content_** :  \n  1. Introduction rassurante  \n  2. Causes traumatiques  \n  3. Causes techniques  \n  4. Conseils pratiques  \n  5. Conclusion motivante  \n  \n  **Contraintes supplémentaires** :  \n  - Le champ **content** commence par la première section renommée avec son titre personnalisé.  \n  - N’ajoute aucun texte, balise ou console.log en dehors de l’objet JSON.  \n  - Optimise naturellement pour : « peur de la conduite » et « progresser au volant ».  \n  - Le JSON retourné doit être strictement valide (guillemets doubles, pas de virgule finale).\n  \n  **Texte source**  \n```\n  L'échec est souvent vécu comme un traumatisme. Il va générer des mécanismes de protection pour éviter que ça se reproduise. Ces mécanismes de protection vont générer forcément du stress. Yeah.Le doute va commencer à s'imisser dans toutes ces actions et va générer forcément des erreurs.\n```",
+            "tags": [
+                "peur de la conduite",
+                "stress au volant",
+                "progression",
+                "amaxophobie",
+                "conduite accompagnée",
+                "concentration"
+            ],
+            "type": "tutoriel",
+            "status": "published",
+            "seo": {
+                "title": "Vaincre la peur de la conduite et progresser au volant",
+                "description": "Apprenez à gérer le stress au volant, surmonter l’amaxophobie et perfectionner votre trajectoire pour prendre confiance.",
+                "image": ""
+            },
+            "createdAt": "2025-05-25T14:28:16.488Z",
+            "updatedAt": "2025-06-25T11:21:38.657Z",
+            "subtitleDownloaded": true,
+            "order": 1
+        },
+        {
+            "id": "P2",
+            "slug": "transformer-la-peur-en-progression-au-volant",
+            "title": "Transformer la peur en progression au volant",
+            "excerpt": "Apprenez à identifier et dépasser votre peur de la conduite grâce à un accompagnement sur mesure pour progresser au volant en toute sérénité.",
+            "content": "## Retrouver confiance avant de démarrer\nAvant chaque trajet, une préparation mentale ciblée et un coaching concentration apaisent l’esprit. Un accompagnement supervisé instaure un cadre rassurant et diminue le stress avant examen pour aborder la route avec calme.\n\n## Quand le passé marque chaque embardée\nUn incident antérieur ou un échec peut laisser une empreinte émotionnelle profonde. Cette amoxophobie déclenche des mécanismes de protection qui amplifient chaque frémissement de peur de la conduite et génèrent de nouvelles appréhensions.\n\n## Dévoiler les blocages techniques\nLe manque de maîtrise de la trajectoire ou la gestion d’un freinage en virage renforce l’anxiété. Sans perfectionnement progressif, chaque manœuvre en situation difficile devient source de tension et fragilise la confiance.\n\n## Adopter des routines pour avancer\nPour progresser au volant, intégrez des exercices pratiques de conduite accompagnée et des ateliers de concentration. Des sessions techniques régulières permettent de maîtriser la trajectoire et de réduire le stress en apprenant pas à pas.\n\n## Se projeter vers de nouveaux horizons\nEn combinant gestion du stress, coaching personnalisé et perfectionnement de la conduite, chaque sortie devient une victoire. Vous gagnez en assurance et transformez la peur de la conduite en moteur de progrès continu.",
+            "authorId": "A1",
+            "sectionIds": ["S1"],
+            "relatedPostIds": [],
+            "videoUrl": "https://www.youtube.com/shorts/0ZDu8ckeeUc",
+            "subtitleSource": "La peur de la conduite ou le stress lié à la conduite automobile n'est pas facile au quotidien. C'est un handicap invisible que l'on porte tous les jours et on a l'impression qu'il n'y a pas de solution. La peur de la conduite est multifactorial. est lié à plusieurs facteurs possibles d'ordre émotionnel si vous avez fait un incident ou d'ordre plutôt technique. L'idée c'est de comprendre l'origine de la peur pour avoir une solution adaptée. Je suis moyen je suis spécialiste de la peur de la conduite. C'est ma passion au quotidien. Vous allez me dire drôle les passions, mais c'est une passion qui me suit depuis des années. Je me suis beaucoup formé, j'ai beaucoup lu et je vous ai aussi beaucoup évalué, beaucoup regardé pour comprendre ces mécanismes là et trouver surtout des solutions. Il existe une solution à chaque problématique de conduite. J'ai l'ensemble des solutions et je peux vous les proposer. Essayez de me répondre en commentaire en disant quelle problématique vous avez et j'essaierai de faire des vidéos autour de ces problématiques. Vous pouvez aussi consulter mon site alphabet portelaconvite.fr ou alors m'appeler pour avoir un diagnostic gratuit. À bientôt.",
+            "generatedPrompt": "Tu es un rédacteur expert en blogging pédagogique sur la conduite et la gestion du stress au volant.\n  Intègre, sans jamais les énumérer, les services suivants :\n  - Gestion du stress avant examen\\n- Gestion des situations de conduite difficiles\\n- Conduite accompagnée ou supervisée\\n- Coaching Concentration\\n- Maîtrise de la trajectoire\\n- Peur de la conduite (Amaxophobie)\\n- Perfectionnement de la Conduite\n  \n  À partir du texte source ci-dessous, renvoie **uniquement** un objet JSON valide ayant les clés :\n  \n  - **title**   : titre accrocheur  \n  - **excerpt** : phrase d’accroche (≤ 150 caractères)  \n  - **content** : corps de l’article au format Markdown avec **cinq** sections. Pour chaque section :  \n    - un titre de niveau 2 vraiment personnalisé ; il **ne doit contenir** aucun des mots suivants : « Introduction », « Causes », « Conseils », « Conclusion ».  \n      *Exemple :* `## Des premiers tours de roue en toute sérénité`  \n    - immédiatement après, un paragraphe de 2 à 3 phrases qui développe l’idée.  \n  - **tags**    : tableau de mots-clés  \n  - **seo**     :  \n    - **title**       (≤ 60 caractères)  \n    - **description** (≤ 155 caractères)\n  \n  **Ordre sémantique à suivre dans _content_** :  \n  1. Introduction rassurante  \n  2. Causes traumatiques  \n  3. Causes techniques  \n  4. Conseils pratiques  \n  5. Conclusion motivante  \n  \n  **Contraintes supplémentaires** :  \n  - Le champ **content** commence par la première section renommée avec son titre personnalisé.  \n  - N’ajoute aucun texte, balise ou console.log en dehors de l’objet JSON.  \n  - Optimise naturellement pour : « peur de la conduite » et « progresser au volant ».  \n  - Le JSON retourné doit être strictement valide (guillemets doubles, pas de virgule finale).\n  \n  **Texte source**  \n```\n  La peur de la conduite ou le stress lié à la conduite automobile n'est pas facile au quotidien. C'est un handicap invisible que l'on porte tous les jours et on a l'impression qu'il n'y a pas de solution. La peur de la conduite est multifactorial. est lié à plusieurs facteurs possibles d'ordre émotionnel si vous avez fait un incident ou d'ordre plutôt technique. L'idée c'est de comprendre l'origine de la peur pour avoir une solution adaptée. Je suis moyen je suis spécialiste de la peur de la conduite. C'est ma passion au quotidien. Vous allez me dire drôle les passions, mais c'est une passion qui me suit depuis des années. Je me suis beaucoup formé, j'ai beaucoup lu et je vous ai aussi beaucoup évalué, beaucoup regardé pour comprendre ces mécanismes là et trouver surtout des solutions. Il existe une solution à chaque problématique de conduite. J'ai l'ensemble des solutions et je peux vous les proposer. Essayez de me répondre en commentaire en disant quelle problématique vous avez et j'essaierai de faire des vidéos autour de ces problématiques. Vous pouvez aussi consulter mon site alphabet portelaconvite.fr ou alors m'appeler pour avoir un diagnostic gratuit. À bientôt.\n```",
+            "tags": [
+                "peur de la conduite",
+                "progresser au volant",
+                "stress au volant",
+                "coaching concentration",
+                "maîtrise trajectoire",
+                "conduite supervisée"
+            ],
+            "type": "tutoriel",
+            "status": "published",
+            "seo": {
+                "title": "Surmonter la peur de la conduite et progresser",
+                "description": "Identifiez l’origine de votre peur de la conduite et adoptez des méthodes ciblées pour progresser au volant avec confiance.",
+                "image": ""
+            },
+            "createdAt": "2025-05-25T14:54:27.233Z",
+            "updatedAt": "2025-05-25T14:54:27.233Z",
+            "subtitleDownloaded": true,
+            "order": 2
+        },
+        {
+            "id": "P3",
+            "slug": "et-si-la-peur-de-conduire-n-etait-qu-un-manque-de-preparation",
+            "title": "Et si la peur de conduire n’était qu’un manque de préparation ?",
+            "excerpt": "La peur au volant n’est pas une fatalité : avec les bons repères, vous pouvez enfin vous sentir prêt.",
+            "content": "## Mettre en ordre son esprit avant de tourner la clé\nComme on prépare sa maison avant l’arrivée d’amis, se préparer à conduire, c’est poser les bases d’un trajet apaisé. Quand tout est prêt, l’angoisse s’éloigne naturellement et laisse place à la confiance.\n\n## Quand les souvenirs s’imposent au rétro\nUn échec à l’examen, une mauvaise expérience ou une remarque blessante peuvent marquer durablement. Ces blessures invisibles freinent les progrès et rendent chaque trajet plus lourd qu’il ne devrait l’être.\n\n## L’enchaînement des gestes qui paralysent\nChanger de direction, démarrer en pente ou croiser un véhicule imposant peut vite sembler insurmontable sans accompagnement adapté. Le corps se fige là où il devrait réagir avec fluidité.\n\n## Réinstaller la confiance dans les petits gestes\nTravailler la concentration, réapprendre à lire la route et se corriger dans la bienveillance permet de progresser plus sereinement. Ce sont les habitudes rassurantes qui créent la liberté.\n\n## Reprendre le volant de son parcours\nQuand les bons automatismes remplacent les tensions, on redécouvre le plaisir simple de se déplacer. Le stress s’efface à mesure que les progrès s’installent durablement.",
+            "authorId": "A1",
+            "sectionIds": ["S1"],
+            "relatedPostIds": [],
+            "videoUrl": "https://www.youtube.com/shorts/MbMx_OMVtzo",
+            "subtitleSource": "Quelle est la différence entre être prêt et avoir peur ? Essayez de me dire en commentaire pour vous quelles sont les différences majeures. Je vais vous faire une petite métaphore qui va peut-être vous aiguiller dans la réponse. Si vous faites le ménage chez vous, vous préparez tout ce qu'il faut à manger et à boire. Si vos amis arrivent, vous autorisez leur venu. C'est-à-dire que vous n'avez pas peur de leur venu. Vous êtes pas stressé quand ils arrivent. En revanche, si vous n'avez rien préparé, si votre maison est en sessus dessous, sils arrivent et vous avez rien à manger, vous allez pas être bien, vous allez mal vous sentir, vous allez être stressé. Donc, quelle est la conclusion de cette petite métaphore ? Essayez de me répondre de façon la plus concrète possible.",
+            "generatedPrompt": "Tu es un rédacteur expert en blogging pédagogique sur la conduite et la gestion du stress au volant.\n  Intègre, sans jamais les énumérer, les services suivants :\n  - Gestion du stress avant examen\\n- Gestion des situations de conduite difficiles\\n- Conduite accompagnée ou supervisée\\n- Coaching Concentration\\n- Maîtrise de la trajectoire\\n- Peur de la conduite (Amaxophobie)\\n- Perfectionnement de la Conduite\n  \n  À partir du texte source ci-dessous, renvoie **uniquement** un objet JSON valide ayant les clés :\n  \n  - **title**   : titre accrocheur  \n  - **excerpt** : phrase d’accroche (≤ 150 caractères)  \n  - **content** : corps de l’article au format Markdown avec **cinq** sections. Pour chaque section :  \n    - un titre de niveau 2 vraiment personnalisé ; il **ne doit contenir** aucun des mots suivants : « Introduction », « Causes », « Conseils », « Conclusion ».  \n      *Exemple :* `## Des premiers tours de roue en toute sérénité`  \n    - immédiatement après, un paragraphe de 2 à 3 phrases qui développe l’idée.  \n  - **tags**    : tableau de mots-clés  \n  - **seo**     :  \n    - **title**       (≤ 60 caractères)  \n    - **description** (≤ 155 caractères)\n  \n  **Ordre sémantique à suivre dans _content_** :  \n  1. Introduction rassurante  \n  2. Causes traumatiques  \n  3. Causes techniques  \n  4. Conseils pratiques  \n  5. Conclusion motivante  \n  \n  **Contraintes supplémentaires** :  \n  - Le champ **content** commence par la première section renommée avec son titre personnalisé.  \n  - N’ajoute aucun texte, balise ou console.log en dehors de l’objet JSON.  \n  - Optimise naturellement pour : « peur de la conduite » et « progresser au volant ».  \n  - Le JSON retourné doit être strictement valide (guillemets doubles, pas de virgule finale).\n  \n  **Texte source**  \n```\n  Quelle est la différence entre être prêt et avoir peur ? Essayez de me dire en commentaire pour vous quelles sont les différences majeures. Je vais vous faire une petite métaphore qui va peut-être vous aiguiller dans la réponse. Si vous faites le ménage chez vous, vous préparez tout ce qu'il faut à manger et à boire. Si vos amis arrivent, vous autorisez leur venu. C'est-à-dire que vous n'avez pas peur de leur venu. Vous êtes pas stressé quand ils arrivent. En revanche, si vous n'avez rien préparé, si votre maison est en sessus dessous, sils arrivent et vous avez rien à manger, vous allez pas être bien, vous allez mal vous sentir, vous allez être stressé. Donc, quelle est la conclusion de cette petite métaphore ? Essayez de me répondre de façon la plus concrète possible.\n```",
+            "tags": [
+                "peur de la conduite",
+                "gestion du stress",
+                "apprendre à conduire",
+                "progression",
+                "coaching",
+                "confiance en soi",
+                "conduite"
+            ],
+            "type": "tutoriel",
+            "status": "published",
+            "seo": {
+                "title": "Peur de conduire : comment progresser au volant",
+                "description": "Découvrez comment surmonter la peur de conduire grâce à une préparation adaptée et des exercices de progression bienveillants.",
+                "image": ""
+            },
+            "createdAt": "2025-05-30T18:13:56.899Z",
+            "updatedAt": "2025-05-30T18:13:56.899Z",
+            "subtitleDownloaded": true,
+            "order": 3
+        },
+        {
+            "id": "P4",
+            "slug": "et-si-la-peur-de-conduire-n-etait-qu-une-inconnue-a-apprivoiser",
+            "title": "Et si la peur de conduire n'était qu'une inconnue à apprivoiser ?",
+            "excerpt": "Transformez votre peur du volant en confiance durable grâce à une méthode simple et puissante.",
+            "content": "## Quand la route ne fait plus peur, elle devient un terrain de jeu\nIl existe un moment magique où la peur de conduire se transforme en confiance. Ce n’est pas un talent inné, mais un apprentissage, une intégration progressive. En changeant votre rapport à l’inconnu, la conduite devient un espace de liberté, pas de tension.\n\n## Ces expériences qui laissent des traces sur le siège passager\nUn accident, une mauvaise formation ou une remarque désobligeante peuvent marquer profondément. Ces épisodes restent gravés dans notre mémoire émotionnelle et resurgissent à chaque tentative de reprendre le volant, parfois même inconsciemment.\n\n## Ce que le corps ne maîtrise pas, l’esprit redoute\nLa peur naît aussi d’un manque de repères techniques. Lorsque les réflexes ne sont pas encore installés, chaque manœuvre devient source de doute. Travailler la concentration, la précision des trajectoires ou encore l’anticipation permet de retrouver la maîtrise.\n\n## Familiariser la peur pour mieux la dépasser\nImaginez une peur comme une personne inconnue dans votre salon. Si elle revient chaque jour, interagit avec vos proches, elle devient familière. C’est exactement ce que permet un accompagnement adapté : intégrer ce qui vous bloque pour ne plus en être prisonnier.\n\n## De l’inconfort à l’aisance, un chemin accessible à tous\nProgresser au volant, c’est un chemin personnel, mais jamais solitaire. Avec des outils concrets et une approche bienveillante, on passe de l’appréhension à la confiance, de la survie au plaisir de conduire. Ce chemin est le vôtre, il commence aujourd’hui.",
+            "authorId": "A1",
+            "sectionIds": ["S1"],
+            "relatedPostIds": [],
+            "videoUrl": "https://www.youtube.com/shorts/bInA4hpa1nc",
+            "subtitleSource": "ous savez ce qui est fascinant, c'est que j'ai le secret pour avoir zéro peur en conduite pour être totalement serein. Ce qui est fascinant, c'est que quand on essaie d'utiliser, on essaie d'utiliser ça dans la vie, on obtient exactement le même résultat. Une peur est quelque chose qui n'est pas intégré. Je fais souvent des métaphores pour expliquer les choses. Je vais vous expliquer les choses de façon extrêmement simple. Vous arrivez dans une pièce et vous tombez sur quelqu'un que vous connaissez pas. Vous arrivez chez vous et vous arrivez dans vous voyez quelqu'un que vous connaissez pas. Vous allez bloquer votre regard dessus. Vous avez bloqué votre attention dessus et il y a il y a un certain nombre de pensées qui vont arriver. Il y a des jugements qui vont arriver. Des autres membres de votre famille, ils sont là mais vous allez pas les voir. Pourquoi ? Parce que vous allez être bloqué dessus. ce monsieur, cette personne, cette monsieur monsieur ou cette dame d'ailleurs, si il est amené à revenir chez vous, s'il côtoie quelqu'un de votre famille, vous allez l'intégrer. C'est-à-dire qu'il fait partie maintenant du champ des possibles, il fait fait partie de votre réalité et vous allez pas bloquer dessus. Maintenant, l'idée c'est donc d'intégrer un certain nombre de choses pour ne plus avoir peur de ces choses. Et c'est exactement ce que je fais au quotidien dans mon travail. Je suis mou, je suis coach, spécialiste de la peur, de la conduite et du stress avant le passage de l'examen. devez vous accompagner individuellement pour vous aider à surmonter vos peurs et votre stress lié à la conduite automobe.",
+            "generatedPrompt": "Tu es un rédacteur expert en blogging pédagogique sur la conduite et la gestion du stress au volant.\n  Intègre, sans jamais les énumérer, les services suivants :\n  - Gestion du stress avant examen\\n- Gestion des situations de conduite difficiles\\n- Conduite accompagnée ou supervisée\\n- Coaching Concentration\\n- Maîtrise de la trajectoire\\n- Peur de la conduite (Amaxophobie)\\n- Perfectionnement de la Conduite\n  \n  À partir du texte source ci-dessous, renvoie **uniquement** un objet JSON valide ayant les clés :\n  \n  - **title**   : titre accrocheur  \n  - **excerpt** : phrase d’accroche (≤ 150 caractères)  \n  - **content** : corps de l’article au format Markdown avec **cinq** sections. Pour chaque section :  \n    - un titre de niveau 2 vraiment personnalisé ; il **ne doit contenir** aucun des mots suivants : « Introduction », « Causes », « Conseils », « Conclusion ».  \n      *Exemple :* `## Des premiers tours de roue en toute sérénité`  \n    - immédiatement après, un paragraphe de 2 à 3 phrases qui développe l’idée.  \n  - **tags**    : tableau de mots-clés  \n  - **seo**     :  \n    - **title**       (≤ 60 caractères)  \n    - **description** (≤ 155 caractères)\n  \n  **Ordre sémantique à suivre dans _content_** :  \n  1. Introduction rassurante  \n  2. Causes traumatiques  \n  3. Causes techniques  \n  4. Conseils pratiques  \n  5. Conclusion motivante  \n  \n  **Contraintes supplémentaires** :  \n  - Le champ **content** commence par la première section renommée avec son titre personnalisé.  \n  - N’ajoute aucun texte, balise ou console.log en dehors de l’objet JSON.  \n  - Optimise naturellement pour : « peur de la conduite » et « progresser au volant ».  \n  - Le JSON retourné doit être strictement valide (guillemets doubles, pas de virgule finale).\n  \n  **Texte source**  \n```\n  ous savez ce qui est fascinant, c'est que j'ai le secret pour avoir zéro peur en conduite pour être totalement serein. Ce qui est fascinant, c'est que quand on essaie d'utiliser, on essaie d'utiliser ça dans la vie, on obtient exactement le même résultat. Une peur est quelque chose qui n'est pas intégré. Je fais souvent des métaphores pour expliquer les choses. Je vais vous expliquer les choses de façon extrêmement simple. Vous arrivez dans une pièce et vous tombez sur quelqu'un que vous connaissez pas. Vous arrivez chez vous et vous arrivez dans vous voyez quelqu'un que vous connaissez pas. Vous allez bloquer votre regard dessus. Vous avez bloqué votre attention dessus et il y a il y a un certain nombre de pensées qui vont arriver. Il y a des jugements qui vont arriver. Des autres membres de votre famille, ils sont là mais vous allez pas les voir. Pourquoi ? Parce que vous allez être bloqué dessus. ce monsieur, cette personne, cette monsieur monsieur ou cette dame d'ailleurs, si il est amené à revenir chez vous, s'il côtoie quelqu'un de votre famille, vous allez l'intégrer. C'est-à-dire qu'il fait partie maintenant du champ des possibles, il fait fait partie de votre réalité et vous allez pas bloquer dessus. Maintenant, l'idée c'est donc d'intégrer un certain nombre de choses pour ne plus avoir peur de ces choses. Et c'est exactement ce que je fais au quotidien dans mon travail. Je suis mou, je suis coach, spécialiste de la peur, de la conduite et du stress avant le passage de l'examen. devez vous accompagner individuellement pour vous aider à surmonter vos peurs et votre stress lié à la conduite automobe.\n```",
+            "tags": [
+                "peur de la conduite",
+                "gestion du stress",
+                "progresser au volant",
+                "coaching conduite",
+                "confiance en soi"
+            ],
+            "type": "tutoriel",
+            "status": "published",
+            "seo": {
+                "title": "Peur de conduire : comment progresser sans stress",
+                "description": "Découvrez une approche humaine et progressive pour dépasser la peur de conduire et retrouver le plaisir d'être au volant.",
+                "image": ""
+            },
+            "createdAt": "2025-07-29T16:37:48.610Z",
+            "updatedAt": "2025-07-29T16:37:48.610Z",
+            "subtitleDownloaded": true,
+            "order": 4
+        },
+        {
+            "id": "P5",
+            "slug": "apprivoiser-la-route-apaiser-l-esprit",
+            "title": "Apprivoiser la route, apaiser l’esprit",
+            "excerpt": "Et si la peur de conduire n’était qu’un signal à décoder, plutôt qu’un obstacle à subir ?",
+            "content": "## Un nouvel élan pour se remettre au volant\nRetrouver la confiance en soi derrière un volant commence souvent par un détail simple : se sentir en sécurité. C’est dans un environnement stable, bienveillant, et sans pression que le changement s’enclenche. À partir de là, la peur se transforme peu à peu en curiosité, puis en maîtrise.\n\n## Quand le passé freine l’élan\nCertaines appréhensions ont une racine plus profonde. Un accident, un événement marquant ou une simple expérience désagréable peuvent laisser une empreinte durable. L’inconscient garde alors en mémoire ces signaux de danger, même quand ils ne sont plus d’actualité.\n\n## Et si ce n’était qu’un problème de décodage ?\nBien souvent, la peur naît d’une mauvaise interprétation. Le cerveau croit qu’on ne sait pas faire, parce qu’il n’a pas encore tout intégré. Il anticipe l’échec, surévalue le risque, et pousse à l’évitement. Mais dès qu’un cadre clair permet de reconnecter l’action à la compréhension, tout change.\n\n## Revenir au volant avec méthode et douceur\nRien ne remplace un accompagnement progressif, pensé pour s’adapter au rythme de chacun. Se réapproprier les bons gestes, clarifier les zones floues, et retrouver la concentration, c’est déjà reprendre la main. L’expérience devient un terrain d’apprentissage, et non plus de tension.\n\n## Quand la peur s'efface, la route s’ouvre\nComprendre ce qui bloque, s’entourer des bonnes personnes, pratiquer à son rythme : cela suffit souvent à transformer l’expérience de conduite. Progresser au volant devient alors un vrai plaisir, porteur d’autonomie et de liberté.",
+            "authorId": "A1",
+            "sectionIds": ["S1"],
+            "relatedPostIds": [],
+            "videoUrl": "https://www.youtube.com/shorts/btxhyxOf-q8",
+            "subtitleSource": "Bien sûr que la peur de la conduite peut se soigner et bien sûr qu'elle peut se soigner extrêmement rapidement. Il y a trois ingrédients majeurs, une combinaison de trois ingrédients. Le premier ingrédient est l'espace sécurisé, c'est-à-dire la voiture double commande. Le deuxième élément, c'est la personne bienveillante qui est à côté de vous, qui vous sécurise, qui est là pour vous, qui est là pour vous rassurer, qui est présent pour vous. Le troisème élément et l'un des plus importants, c'est la compréhension de la situation. Quand on a peur, c'est qu'on n' pas compris la situation ou alors notre système via l'accident, via le traumatisme estime qu'on ne sait plus. Finalement, la peur, c'est toujours la même chose. C'est notre système qui a compris, qui a des informations en sa possession pour dire qu'on n pas compris. Le mental va donc rentrer en jeu pour nous forcer, pour nous forcer à éviter les situations, à ne pas y aller, à ne pas conduire, à fuir, à faire vite pour se débarrasser de la situation car il sait que tu ne sais pas. C'est ça la vérité. Quand ton système va se rassurer, va se calmer et il va établir que tu sais la peur va complètement disparaître.",
+            "generatedPrompt": "Tu es un rédacteur expert en blogging pédagogique sur la conduite et la gestion du stress au volant.\n  Intègre, sans jamais les énumérer, les services suivants :\n  - Gestion du stress avant examen\\n- Gestion des situations de conduite difficiles\\n- Conduite accompagnée ou supervisée\\n- Coaching Concentration\\n- Maîtrise de la trajectoire\\n- Peur de la conduite (Amaxophobie)\\n- Perfectionnement de la Conduite\n  \n  À partir du texte source ci-dessous, renvoie **uniquement** un objet JSON valide ayant les clés :\n  \n  - **title**   : titre accrocheur  \n  - **excerpt** : phrase d’accroche (≤ 150 caractères)  \n  - **content** : corps de l’article au format Markdown avec **cinq** sections. Pour chaque section :  \n    - un titre de niveau 2 vraiment personnalisé ; il **ne doit contenir** aucun des mots suivants : « Introduction », « Causes », « Conseils », « Conclusion ».  \n      *Exemple :* `## Des premiers tours de roue en toute sérénité`  \n    - immédiatement après, un paragraphe de 2 à 3 phrases qui développe l’idée.  \n  - **tags**    : tableau de mots-clés  \n  - **seo**     :  \n    - **title**       (≤ 60 caractères)  \n    - **description** (≤ 155 caractères)\n  \n  **Ordre sémantique à suivre dans _content_** :  \n  1. Introduction rassurante  \n  2. Causes traumatiques  \n  3. Causes techniques  \n  4. Conseils pratiques  \n  5. Conclusion motivante  \n  \n  **Contraintes supplémentaires** :  \n  - Le champ **content** commence par la première section renommée avec son titre personnalisé.  \n  - N’ajoute aucun texte, balise ou console.log en dehors de l’objet JSON.  \n  - Optimise naturellement pour : « peur de la conduite » et « progresser au volant ».  \n  - Le JSON retourné doit être strictement valide (guillemets doubles, pas de virgule finale).\n  \n  **Texte source**  \n```\n  Bien sûr que la peur de la conduite peut se soigner et bien sûr qu'elle peut se soigner extrêmement rapidement. Il y a trois ingrédients majeurs, une combinaison de trois ingrédients. Le premier ingrédient est l'espace sécurisé, c'est-à-dire la voiture double commande. Le deuxième élément, c'est la personne bienveillante qui est à côté de vous, qui vous sécurise, qui est là pour vous, qui est là pour vous rassurer, qui est présent pour vous. Le troisème élément et l'un des plus importants, c'est la compréhension de la situation. Quand on a peur, c'est qu'on n' pas compris la situation ou alors notre système via l'accident, via le traumatisme estime qu'on ne sait plus. Finalement, la peur, c'est toujours la même chose. C'est notre système qui a compris, qui a des informations en sa possession pour dire qu'on n pas compris. Le mental va donc rentrer en jeu pour nous forcer, pour nous forcer à éviter les situations, à ne pas y aller, à ne pas conduire, à fuir, à faire vite pour se débarrasser de la situation car il sait que tu ne sais pas. C'est ça la vérité. Quand ton système va se rassurer, va se calmer et il va établir que tu sais la peur va complètement disparaître.\n```",
+            "tags": [
+                "peur de la conduite",
+                "stress au volant",
+                "progresser au volant",
+                "confiance",
+                "accompagnement",
+                "apprentissage conduite"
+            ],
+            "type": "tutoriel",
+            "status": "published",
+            "seo": {
+                "title": "Surmonter la peur de conduire",
+                "description": "Découvrez comment transformer l’anxiété au volant en confiance durable grâce à un accompagnement adapté.",
+                "image": ""
+            },
+            "createdAt": "2025-08-03T16:46:49.392Z",
+            "updatedAt": "2025-08-03T16:46:49.392Z",
+            "subtitleDownloaded": true,
+            "order": 5
+        },
+        {
+            "id": "P6",
+            "slug": "reprendre-le-volant-c-est-maintenant",
+            "title": "Reprendre le volant, c’est maintenant",
+            "excerpt": "Le vrai déclic pour surmonter la peur de conduire, c’est d’apprendre à revenir au moment présent.",
+            "content": "## Retrouver son calme là où tout commence\nOn entend souvent qu’il faut vivre l’instant présent, mais appliqué à la conduite, cela devient vital. Le moment où l’on prend le volant est souvent parasité par des pensées envahissantes. Pourtant, c’est en ramenant son attention ici et maintenant que l’on retrouve assurance et maîtrise.\n\n## Quand le passé s’invite sur la banquette arrière\nUn souvenir de freinage brutal, une mauvaise expérience pendant l’apprentissage ou un échec à un examen peuvent laisser des traces durables. Ce ne sont pas tant les erreurs elles-mêmes qui bloquent, mais les jugements sévères qu’on se porte ensuite. Apprendre à regarder ces moments avec bienveillance, c’est déjà avancer.\n\n## Le flou technique qui fait peur\nSe sentir perdu face à un rond-point, une voie rapide ou une manœuvre, ce n’est pas un manque de capacité, mais un manque d’intégration. Ce sentiment d’impuissance vient souvent d’un apprentissage inachevé. Progresser au volant, c’est aussi renforcer sa base technique dans des conditions sécurisantes.\n\n## Revenir à l’instant pour mieux avancer\nPlutôt que de chercher à tout anticiper, il est essentiel d’apprendre à conduire étape par étape, en se concentrant sur ce qui est là, tout de suite. C’est ainsi qu’on muscle sa capacité de concentration et qu’on gagne en fluidité, notamment dans les situations imprévues.\n\n## La route n’attend que vous\nVotre confiance ne viendra pas d’un savoir parfait, mais de votre capacité à vous autoriser à apprendre, encore et encore. Chaque trajet, chaque reprise du volant est une opportunité d’évoluer, sans pression. Et si c’était maintenant que tout commençait ?",
+            "authorId": "A1",
+            "sectionIds": ["S1"],
+            "relatedPostIds": [],
+            "videoUrl": "https://www.youtube.com/shorts/dmJSF48Q8EI",
+            "subtitleSource": "n nous bassine partout en nous disant il faut rester au présent mais on a l'impression de pas comprendre ce qu'on nous dit. On on nous dit aussi d'accueillir les émotions. Mais pareil on a l'impression de pas comprendre. Alors qu'il s'agit de quelque chose d'extrêmement simple. Vous devez être là présent dans la situation pour y faire face. Or, tous vos pensées vous bloquent au futur ou vous bloquent au passé. Vous bloque au passé quand vous faites des erreurs et vous bloquez dessus parce que vous avez du mal à dépasser ça. Vous vous portez un jugement dessus, c'est-à-dire vous vous dites \"J'aurais pas dû faire ça.\" Et c'est pas l'erreur qui pose problème, c'est le jugement que vous collez dessus. Ensuite, quand vous bloquez au futur, c'est parce que vous avez vous avez l'impression de pas savoir-faire. C'est en ce sens-là que vous manquez de confiance parce que la vraie confiance, c'est de ne pas savoir et de d'être confiant dans sa capacité à faire les choses au présent parce que il y a que le présent qui compte. Yeah.",
+            "generatedPrompt": "Tu es un rédacteur expert en blogging pédagogique sur la conduite et la gestion du stress au volant.\n  Intègre, sans jamais les énumérer, les services suivants :\n  - Gestion du stress avant examen\\n- Gestion des situations de conduite difficiles\\n- Conduite accompagnée ou supervisée\\n- Coaching Concentration\\n- Maîtrise de la trajectoire\\n- Peur de la conduite (Amaxophobie)\\n- Perfectionnement de la Conduite\n  \n  À partir du texte source ci-dessous, renvoie **uniquement** un objet JSON valide ayant les clés :\n  \n  - **title**   : titre accrocheur  \n  - **excerpt** : phrase d’accroche (≤ 150 caractères)  \n  - **content** : corps de l’article au format Markdown avec **cinq** sections. Pour chaque section :  \n    - un titre de niveau 2 vraiment personnalisé ; il **ne doit contenir** aucun des mots suivants : « Introduction », « Causes », « Conseils », « Conclusion ».  \n      *Exemple :* `## Des premiers tours de roue en toute sérénité`  \n    - immédiatement après, un paragraphe de 2 à 3 phrases qui développe l’idée.  \n  - **tags**    : tableau de mots-clés  \n  - **seo**     :  \n    - **title**       (≤ 60 caractères)  \n    - **description** (≤ 155 caractères)\n  \n  **Ordre sémantique à suivre dans _content_** :  \n  1. Introduction rassurante  \n  2. Causes traumatiques  \n  3. Causes techniques  \n  4. Conseils pratiques  \n  5. Conclusion motivante  \n  \n  **Contraintes supplémentaires** :  \n  - Le champ **content** commence par la première section renommée avec son titre personnalisé.  \n  - N’ajoute aucun texte, balise ou console.log en dehors de l’objet JSON.  \n  - Optimise naturellement pour : « peur de la conduite » et « progresser au volant ».  \n  - Le JSON retourné doit être strictement valide (guillemets doubles, pas de virgule finale).\n  \n  **Texte source**  \n```\n  n nous bassine partout en nous disant il faut rester au présent mais on a l'impression de pas comprendre ce qu'on nous dit. On on nous dit aussi d'accueillir les émotions. Mais pareil on a l'impression de pas comprendre. Alors qu'il s'agit de quelque chose d'extrêmement simple. Vous devez être là présent dans la situation pour y faire face. Or, tous vos pensées vous bloquent au futur ou vous bloquent au passé. Vous bloque au passé quand vous faites des erreurs et vous bloquez dessus parce que vous avez du mal à dépasser ça. Vous vous portez un jugement dessus, c'est-à-dire vous vous dites \"J'aurais pas dû faire ça.\" Et c'est pas l'erreur qui pose problème, c'est le jugement que vous collez dessus. Ensuite, quand vous bloquez au futur, c'est parce que vous avez vous avez l'impression de pas savoir-faire. C'est en ce sens-là que vous manquez de confiance parce que la vraie confiance, c'est de ne pas savoir et de d'être confiant dans sa capacité à faire les choses au présent parce que il y a que le présent qui compte. Yeah.\n```",
+            "tags": [
+                "peur de la conduite",
+                "confiance au volant",
+                "gestion du stress",
+                "progresser au volant",
+                "coaching conduite",
+                "amélioration conduite"
+            ],
+            "type": "tutoriel",
+            "status": "published",
+            "seo": {
+                "title": "Peur de conduire : revenir au présent pour progresser",
+                "description": "Surmonter la peur de la conduite passe par l'instant présent : découvrez comment avancer malgré les blocages passés ou les doutes techniques.",
+                "image": ""
+            },
+            "createdAt": "2025-08-03T17:05:21.866Z",
+            "updatedAt": "2025-08-03T17:05:21.866Z",
+            "subtitleDownloaded": true,
+            "order": 6
+        }
+    ],
+    "authors": [
+        {
+            "id": "A1",
+            "name": "Mounir Bouakkaz",
+            "bio": "Enseignant de la conduite automobile et spécialiste de la peur de la conduite, j'offre un accompagnement sur-mesure pour surmonter vos peurs , votre stress et vos problématiques liés à la conduite automobile.",
+            "email": "contact.peurdelaconduite@gmail.com",
+            "order": 1,
+            "createdAt": "2025-05-25T10:44:38.818Z",
+            "updatedAt": "2025-07-13T11:09:03.186Z",
+            "relatedPostIds": [],
+            "avatar": "/img/about/avatar.webp"
+        }
+    ]
+}

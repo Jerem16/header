@@ -1,0 +1,43 @@
+//_variables.scss
+
+$primary-blue: rgba(26, 109, 229, 1);
+$light-blue: rgba(0, 158, 226, 1);
+$secondary-blue: rgb(13, 132, 227);
+$dark-blue: rgb(1, 82, 195);
+
+$sun: rgb(255, 177, 33);
+
+$primary-orange: rgb(209, 73, 5);
+$secondary-orange: rgba(255, 97, 29, 1);
+$rgba-light-orange: rgba(255, 177, 33, 0.15); // Très légère teinte orange
+$rgba-light-blue: rgba(26, 109, 229, 0.15);
+$rgba-md-light-orange: rgba(255, 177, 33, 0.1); // Teinte orange très légère
+$rgba-md-light-blue: rgba(26, 109, 229, 0.1); // Teinte bleue très légère
+$rgba-extra-light-orange: rgba(255, 177, 33, 0.05); // Teinte orange très légère
+$rgba-extra-light-blue: rgba(26, 109, 229, 0.05); // Teinte bleue très légère
+$green: #063;
+$green: #004421;
+
+$primary-black: #1e1e1e;
+$bg-black-900-dark: #151515;
+$black: #000;
+
+$white: #fff;
+
+$grey: #c4c4c4;
+$grey-light: #f2f2f1;
+
+$shadow-rgba: rgba(48, 46, 77, 0.15);
+
+/* Typo */
+
+$roboto: "RobotoFlex", sans-serif;
+$montserrat: "Montserrat", sans-serif;
+$nunito: "Nunito", sans-serif;
+$profile: "Inter", "system-ui", "Avenir", "Helvetica", "Arial", sans-serif;
+
+/* whidth */
+
+$width-card_header: 360px;
+$width-card_content: 720px;
+$width-card_bg: 1314px;

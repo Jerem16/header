@@ -1,0 +1,233 @@
+// _general.scss] ******/
+
+body {
+    font-family: var(--montserrat);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        text-decoration: none;
+    }
+    svg {
+        image-rendering: auto;
+    }
+    overflow-x: hidden;
+    // overflow-y: hidden;
+}
+
+#top {
+    border-top: 0.5px solid transparent;
+}
+section#hs {
+    /* background: rgb(255, 177, 33); */
+}
+section#hs > .loader {
+    top: 0;
+    z-index: -1;
+}
+section#hs > h2 {
+    padding-left: 2rem;
+    // height: 45vh;
+}
+section#hs > p {
+    padding: 2.5rem;
+    height: 90vh;
+}
+
+.search {
+    max-width: 223px !important;
+    .nav-padding {
+        padding: 1rem 1.5rem !important;
+    }
+}
+p {
+    max-width: $width-card_content;
+    margin: 0 auto;
+    @include paragraph;
+}
+h2 {
+    @include h2Title;
+}
+input,
+button,
+select,
+textarea,
+option {
+    background: transparent;
+    outline: none;
+    margin: 0;
+    padding: 0;
+    border: none;
+    appearance: none;
+}
+option {
+    cursor: pointer;
+}
+*:focus-visible {
+    outline: 2px solid $primary-blue;
+}
+/* Reset List Styles */
+ul,
+ol {
+    list-style: none;
+}
+
+.content-wrapper {
+    margin: 0 auto;
+    max-width: 1440px;
+    width: auto;
+    position: relative;
+}
+
+.flx-c {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+//? Card
+.card_bg {
+    position: absolute;
+    left: 42px;
+    top: 82px;
+    width: $width-card_bg;
+    height: calc(360px + 82px);
+    border-radius: 45px 0px 45px 45px;
+    background: $white;
+}
+.segment {
+    width: $width-card_bg;
+    height: auto;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    column-gap: calc(42px);
+    position: relative;
+    margin: 0 0 0 42px;
+
+    .card_header,
+    .card_empty {
+        width: calc($width-card_header + 42px + 42px);
+        flex-flow: column nowrap;
+        padding: 40px 42px;
+        padding: 40px 42px 42px 42px;
+        display: flex;
+        border-radius: 45px;
+    }
+    .card_empty {
+        background: none;
+    }
+    .card_content,
+    .srv-description {
+        display: flex;
+        width: calc($width-card_content + 60px + 42px);
+        flex-flow: column nowrap;
+        align-content: space-between;
+        justify-content: space-between;
+        padding: 40px 66px 42px 42px;
+        border-radius: 45px 90px 45px 45px;
+
+        p {
+            padding: 0;
+            margin: 0;
+        }
+    }
+}
+.card_title,
+.card_empty {
+    height: 82px;
+    width: calc($width-card_content + 66px + 42px);
+    padding: 40px 66px 42px 42px;
+    border-radius: 45px 82px 0px 0px;
+    background: $white;
+}
+
+@keyframes opacityAnimationDelay {
+    0% {
+        opacity: 0;
+        display: none;
+    }
+    50% {
+        display: inherit;
+    }
+    66% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@keyframes opacityAnimation {
+    0% {
+        opacity: 0;
+        transform: translateY(-16px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+// @keyframes shadowAnimation {
+//     0% {
+//         @include menuShadow(rgba(0, 0, 0, 0.5));
+//     }
+//     100% {
+//         @include menuShadow(rgba(0, 0, 0, 0.25));
+//     }
+// }
+@keyframes opacityWidthAnimationIn {
+    0% {
+        opacity: 0;
+        width: 0;
+    }
+    66% {
+        width: 50%;
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    90% {
+        width: 100%;
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+@keyframes opacityWidthAnimationOut {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    10% {
+        width: 100%;
+    }
+    66% {
+        width: 50%;
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-20px);
+        width: 0%;
+    }
+}
