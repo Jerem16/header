@@ -1,0 +1,10 @@
+{
+  "entryLayouts": [
+    "app/layout.tsx"
+  ],
+  "counts": {
+    "keep": 136,
+    "deleteCandidates": 21,
+    "totalScanned": 102
+  }
+}

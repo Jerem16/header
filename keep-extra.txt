@@ -1,0 +1,7 @@
+﻿app/**
+src/components/header/**
+src/components/frames/**
+src/styles/00_utils/**
+src/components/header/header.scss
+src/components/button/button.scss
+src/components/frames/frames.scss
