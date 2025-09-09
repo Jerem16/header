@@ -1,12 +1,6 @@
-parfait — voici une version **propre**, **humaine** et **techniquement carrée** à coller en tête de ton README “moteur”.
-
----
-
 # 📌 Résumé exécutif (propre & prêt à coder)
 
 ## 🧱 Les 6 briques du moteur
-
-Parfait — je **reprends l’Étape 1** comme tu veux : **doc humaine, technique et fonctionnelle**, sans tests ni critères d’acceptation, et avec une vraie **chaîne “Moteur (tech)”** listant **tous les hooks/fichiers** impliqués.
 
 ---
 
@@ -367,29 +361,6 @@ SubMenu.onClick
        └─ ScrollSpy → activeSection='avec-permis'
           → updateMenuClasses(...) // Services + Avec Permis actifs
 ```
-
----
-
-## 🧹 Nettoyage “doux” (sans rien casser)
-
--   **Unifier** l’héritage d’offset dans un helper :
-    `getOffsetFor(subItem, parent) => subItem.scrollOffset ?? parent.scrollOffset ?? 0`
--   **Centraliser** l’extraction route/ancre :
-    `splitPath('/p2#expert') => { route:'/p2', anchor:'#expert' }`
--   **Corriger les classes** : en JSX, c’est **`className="connexion"`** (pas `connect`) pour matcher le SCSS.
--   **S’assurer que `navRef`** est posé sur **tous** les `<nav>` (cf. note importante en haut de `menuItems.ts`).
--   **Optionnel** : exposer une petite API unique côté moteur, sans changer les appels actuels :
-
-    ```ts
-    // src/utils/navEngine.ts
-    export function navigate(fullPathOrRoute: string, offset?: number) {
-        // 1) split route/anchor
-        // 2) route !== currentRoute ? updateRoute : handleScrollClick(anchor, offset)
-        // 3) laisser useInitialScroll gérer l’ancre après route change
-    }
-    ```
-
-    …et **`handleNavClick`** devient un simple wrapper de `navigate`.
 
 ---
 
