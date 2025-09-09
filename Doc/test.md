@@ -767,34 +767,6 @@ Navigation vers /blog
 
 ---
 
-## 🧹 Nettoyage “doux” (safe, sans tout casser)
-
-1. **Synchroniser données**
-
-    - Vérifier que **chaque `AnchorId`** (ex. `'#expert'`) a bien son **pendant dans `sections.ts`** (`{ id: 'expert' }`).
-    - Ajouter un **script de vérif** (lint) qui compare `menuItems` ↔ `sections` (build-time ou dev).
-
-2. **Normaliser les helpers**
-
-    - `anchorToId(anchor: string) => anchor.replace(/^#/, "")`
-    - `idToAnchor(id: string) => '#' + id`
-    - **Un seul endroit** où l’on applique la logique **`subItem.scrollOffset ?? parent.scrollOffset ?? 0`**.
-
-3. **Observer unique**
-
-    - Un seul **`IntersectionObserver`** dans `useScrollContext`, branché sur **toutes** les sections.
-    - **Disconnect/Reconnect** propre lors des changements de route (éviter fuites d’observations).
-
-4. **Débruiter le scroll**
-
-    - Si tu utilises `addScrollListener` en complément : throttle à **`requestAnimationFrame`** (ou `setTimeout` 16 ms) pour éviter le thrash.
-
-5. **Fallback sans crash**
-
-    - Si ancre introuvable → **ne pas** forcer `activeSection`; **route-only** prend le relais (comportement actuel, à préserver).
-
----
-
 ## 📁 Fichiers & responsabilités (mémo)
 
 -   `utils/context/ScrollContext.tsx` → **source de vérité** pour `activeSection` (Observer/scroll).
@@ -807,310 +779,155 @@ Navigation vers /blog
 
 ---
 
----
+# Étape 5 — Recherche (NavInput + useSearchHandler + SearchContext)
 
-## 5) **ScrollSpy / Active section — scroll manuel dans “Tarifs”**
+## 🎯 L’idée
 
-**Situation initiale**
-Je suis sur **`/p2`** (Tarifs), sous-menu fermé.
+Recherche “header” unifiée :
 
-**Action**
-Je scrolle manuellement jusqu’à ce que **`#novice`** soit majoritairement visible.
-
-**Résultat**
-
--   `activeSection = 'novice'`.
--   **Tarifs** (parent) reste `.active`.
--   Le sous-item **Débutant** (`#novice`) devient `.active`.
--   L’URL peut rester sur un ancien hash si je n’ai pas cliqué ; **l’état visuel suit la vue**, pas forcément l’hash.
-
-**Moteur (tech)**
-IntersectionObserver / listener → section dominante = `novice`.
-`updateMenuClasses` active le sous-item dont `AnchorId === '#'+activeSection`.
+-   **Saisie** dans `NavInput`
+-   **Suggestions** instantanées (sous-menu)
+-   **Validation** → URL sync (`/search?query=...`) et **store** de résultats (SearchContext)
+-   **Reset** propre (UI + URL)
 
 ---
 
-## 6) **État du menu & outside-click (fermeture sûre)**
+## 📍 Où ça vit (fichiers clés)
 
-**Situation initiale**
-Un sous-menu est ouvert.
+-   `components/header/navInput/NavInput.tsx` → conteneur UI (input + sous-résultats)
+-   `components/header/navInput/RenderInput.tsx` → input + gestion Enter
+-   `components/header/navInput/RenderInputButton.tsx` → icône Search / bouton Reset
+-   `components/header/navInput/SubResult.tsx` → liste de suggestions
+-   `components/header/navInput/useSearchHandler.tsx` → **moteur** (query, suggestions, submit, reset)
+-   `utils/searchMenu.ts` → recherche plein-texte sur la **data menu**
+-   `utils/searchUtils.ts` → `filterSuggestions(...)`
+-   `utils/useURLParams.ts` → lecture/écriture des `?query=` | `?badKeyWord=`
+-   `utils/updateMenuUtils.ts` → `useMenuBehavior()` (⚠️ **`navRef`** sur `<nav class="research">`)
+-   `context/SearchContext` _(non listé ici, mais utilisé)_ → `menuData`, `results`, `query`
 
-**Action**
-Je clique **en dehors** des `<nav ref={navRef}>` ou j’appuie sur **Échap**.
-
-**Résultat**
-
--   Tous les sous-menus se **ferment**.
--   Le **focus** revient au déclencheur (accessibilité).
-
-**Moteur (tech)**
-`useMenuBehavior(navRef)` repère le clic extérieur et gère `setOpenSubMenu(null)` ; même logique sur `Esc`.
-
----
-
-## 7) **Synchronisation des classes (page sans ancre) — “Blog”**
-
-**Situation initiale**
-J’ouvre **`/blog`**.
-
-**Action**
-Aucune ancre sur la page.
-
-**Résultat**
-
--   **Blog** reçoit `.active` via **match du `path`** (`currentRoute === '/blog'`).
--   Aucun sous-item actif (pas d’ancres).
-
-**Moteur (tech)**
-`updateMenuClasses(..., activeSection=null, currentRoute='/blog')` → activation par `path`.
+> Data côté menu enrichie par `attachContentToMenu(...)` pour permettre de chercher **aussi** dans les contenus attachés.
 
 ---
 
-## 8) **Recherche — suggestions + URL + reset**
+## 🔁 Cycle (saisir → suggérer → valider → router)
 
-# Étape 5 — Recherche
+1. **Saisie**
+   `RenderInput.onChange` → `useSearchHandler.handleSearch()`
 
-(`NavInput` + `useSearchHandler` + `SearchContext`)
+-   < 3 chars → **pas** de suggestions
+-   ≥ 3 chars → `searchQuery(menuData, query)` → `filterSuggestions(...)` → `suggestions` + **ouvrir** `SubResult`
 
-## 🎯 Le rôle (humain)
+2. **Suggestion (clic)**
+   `SubResult.onSuggestionSelect()` →
 
-Proposer une **recherche “inline” dans le header** : saisie, suggestions dès 3 caractères, validation → **redirection vers `/search?query=...`**, ou **`?badKeyWord=`** si aucun résultat. Le tout **sans casser** les mécaniques d’ouverture/fermeture du menu, ni l’accessibilité clavier.
+-   `setQuery(suggestion)` + `setResults(...)`
+-   URL: `setParam("query", suggestion)` + `router.push('/search?query=...')`
+-   **Fermer** le sous-résultat
 
----
+3. **Submit (Enter / icône)**
+   `handleSubmit()` →
 
-## 👤 Scénarios utilisateur (fonctionnels)
+-   `results = searchQuery(menuData, trimmedQuery)`
+-   Si 0 résultat → `/search?badKeyWord=...`
+-   Sinon → `/search?query=...`
+-   **Fermer** le sous-résultat
 
-### 5.1 — Suggestions dès 3 caractères
+4. **Reset (croix)**
+   `RenderInputButton` (si `hasQuery || isSubmitted`) → `handleReset()`
 
-**Situation** : je suis sur n’importe quelle page, le header est visible.
-**Action** : je clique l’icône **Recherche** puis je tape `con`.
-**Résultat** : le champ s’ouvre, j’ai des **suggestions** sous le champ (issues du menu/data), la liste se **masque** si je repasse à 2 caractères.
+-   Vide `query`/`suggestions`/`results`
+-   Supprime `?query` et `?badKeyWord`
 
-### 5.2 — Sélection d’une suggestion
-
-**Situation** : j’ai des suggestions affichées.
-**Action** : je clique sur **“Avec Permis”**.
-**Résultat** : la **query** devient `Avec Permis`, navigation vers **`/search?query=Avec%20Permis`**, le moteur de recherche interne reçoit et affiche les résultats.
-
-### 5.3 — Validation sans suggestion
-
-**Situation** : j’ai tapé `abcdef`.
-**Action** : j’appuie **Entrée**.
-**Résultat** : navigation vers **`/search?badKeyWord=abcdef`** (aucun résultat côté moteur), le champ est marqué comme **soumis**, le bouton devient **Reset**.
-
-### 5.4 — Réinitialisation
-
-**Situation** : une recherche est soumise.
-**Action** : je clique l’icône **croix** (bouton reset).
-**Résultat** : **query vidée**, suggestions fermées, **URL nettoyée** (`?query`/`?badKeyWord` supprimés), résultats effacés dans le contexte.
-
-### 5.5 — Accès clavier / A11y
-
-**Situation** : je navigue au clavier.
-**Action** : **Tab** pour focusser l’icône, **Entrée** pour ouvrir le champ, je saisis puis **Entrée**.
-**Résultat** : même flux que la souris (ouverture, suggestions, validation). La touche **Entrée** ne déclenche le submit **que** si le champ est visible.
+5. **Menu behavior**
+   `useMenuBehavior` + **`ref={navRef}` sur `<nav class="research">`** → clics à l’intérieur **non** considérés “extérieurs” → pas de fermeture intempestive.
 
 ---
 
-## 🧠 Moteur (tech) — qui fait quoi, où, et dans quel ordre
+## 🧠 Moteur (tech) — qui fait quoi
 
-### 1) L’entrée UI : `NavInput`
+-   **`Nav.tsx`**
+    Monte la nav **Recherche** :
 
--   **Fichier** : `src/components/header/navInput/NavInput.tsx`
--   **Rôle** : wrapper qui orchestre l’input, le bouton (loupe/croix) et la liste de suggestions.
--   **Props clés** (venues de `Nav.tsx`) :
+    ```tsx
+    <nav className="research">
+      <NavInput ... showNavLinks={shouldShowNavLinks('search')} />
+    </nav>
+    ```
 
-    -   `isOpen`, `showNavLinks` → contrôlent l’affichage progressif (icône seule vs champ visible).
-    -   `onMenuToggle`, `onMouseEnter`, `onFocus` → intègrent la recherche au **moteur d’ouverture** du header (mêmes patterns que les autres entrées).
+    `showNavLinks` contrôle **apparition** de l’input via `HiddenDelayComponent`.
 
--   **Handlers** (via `useSearchHandler`) :
+-   **`NavInput.tsx`**
+    Orchestration UI : **form** + **RenderInput** + **SubResult**.
 
-    -   `handleSearch` (onChange), `handleSubmit` (submit/Enter), `handleReset` (croix), `handleSuggestionClick` (click suggestion).
+    -   `onMenuToggle(menuItem.id)` ouvre/ferme la zone de saisie dans le header
+    -   `isSubResultOpen && query` → affiche `SubResult`
 
--   **Sous-composants** :
+-   **`RenderInput.tsx`**
 
-    -   `RenderInput` → champ + bouton (loupe/croix) + animation différée (`HiddenDelayComponent`).
-    -   `SubResult` → **liste des suggestions** (rendue **seulement** si `query.length ≥ 3` && `isSubResultOpen` && `showNavLinks`).
+    -   Input **contrôlé** (SearchContext)
+    -   Enter → `handleSubmit`
+    -   Révèle le label avec `HiddenDelayComponent` (matching visuel avec tes autres liens)
 
-> 💡 **Intégration menu** : `NavInput` utilise `getShowGroupClass` pour alterner **icône seule** (`nav-circle`) vs **icône + champ** (`nav-padding`) selon `showNavLinks` (piloté par `useResize` + interactions).
+-   **`RenderInputButton.tsx`**
 
----
+    -   **Icône Search** (submit) ↔ **Close** (reset) en fonction de l’état
+    -   Pas de style imposé (reprend `.nav-icon`)
 
-### 2) La logique de recherche : `useSearchHandler`
+-   **`useSearchHandler.tsx`** _(cœur logique)_
 
--   **Fichier** : `src/components/header/navInput/useSearchHandler.tsx`
--   **Dépendances** :
-
-    -   **`SearchContext`** (`useSearch`) : expose `menuData`, `setResults`, `query`, `setQuery`.
-    -   **`searchQuery`** (`utils/searchMenu`) : filtre **la data du menu** selon la query.
-    -   **`filterSuggestions`** (`utils/searchUtils`) : déduplique/normalise les **suggestions** affichables.
-    -   **`useURLParams`** : écrit/efface les paramètres d’URL (`query` / `badKeyWord`).
-    -   **`useRouter`** (Next) : pousse la navigation vers `/search?...`.
-
--   **Comportement** :
-
-    -   **`handleSearch`** :
-
-        -   `query = e.target.value.trim()`
-        -   Si `query.length < 3` → **ferme** les suggestions.
-        -   Sinon → `searchQuery(menuData, query)` → **suggestions uniques** via `filterSuggestions` → **ouvre** `SubResult`.
-
-    -   **`handleSubmit`** :
-
-        -   ignore si `trimmedQuery.length < 1`.
-        -   `results = searchQuery(menuData, trimmedQuery)`.
-        -   `setResults(results)`.
-        -   **Router** :
-
-            -   `results.length === 0` → `/search?badKeyWord=...`
-            -   sinon → `/search?query=...`
-
-        -   **Ferme** `SubResult`.
-
-    -   **`handleSuggestionClick(s)`** :
-
-        -   met la `query = s`, calcule `results`, `setResults`, `isSubmitted = true`.
-        -   met à jour **l’URL** (`setParam('query', s)`) et **router.push**.
-
-    -   **`handleReset`** :
-
-        -   vide `query`, `suggestions`, `results`, `isSubmitted=false`.
-        -   supprime `query` et `badKeyWord` de l’URL.
-
-> ℹ️ **Seuil de 3 caractères** : hardcodé ici ; mérite d’être **centralisé** (cf. Nettoyage doux).
+    -   `handleSearch` → suggestions (seuil 3 caractères)
+    -   `handleSubmit` → route `/search?...` + `setResults`
+    -   `handleSuggestionClick` → idem, mais prérempli par la suggestion
+    -   `handleReset` → nettoie Context + URL
 
 ---
 
-### 3) Rendu et UX fine
+## 🧪 User stories (Given / When / Then)
 
--   **`RenderInput`**
+### 5.1 — Suggestions instantanées
 
-    -   Affiche le **champ** **avec délai** (`HiddenDelayComponent`, 450 ms) pour des transitions propres.
-    -   Soumet sur **Entrée** uniquement quand le champ est visible.
+**Given** le header visible, je tape `tar` dans la zone Recherche
+**When** j’atteins 3 caractères
+**Then** un sous-menu s’ouvre avec `Tarifs`, `Débutant`, `Confirmé` (etc.) selon `filterSuggestions`.
 
--   **`RenderInputButton`**
+### 5.2 — Validation par Enter
 
-    -   Affiche **loupe** (submit) **ou croix** (reset) selon `hasQuery || isSubmitted`.
-    -   Si le champ **n’est pas déployé** (`showNavLinks=false`), on affiche **uniquement l’icône** (clic ⇒ ouverture via `onMenuToggle` côté parent).
+**Given** j’ai saisi `confirmé`
+**When** j’appuie sur **Enter**
+**Then** l’URL devient `/search?query=confirm%C3%A9`, `results` est mis à jour dans le SearchContext, le sous-menu se ferme.
 
--   **`SubResult`**
+### 5.3 — Aucun résultat
 
-    -   Liste d’`<option>` cliquables (simples, légers).
-    -   Rendue **dans le même nav** que l’input (important pour la gestion “clic intérieur/extérieur”).
+**Given** je tape `xyzabc`
+**When** j’appuie sur **Enter**
+**Then** l’URL devient `/search?badKeyWord=xyzabc`, `results=[]`, l’UI de la page Search peut afficher “Aucun résultat”.
 
----
+### 5.4 — Sélection d’une suggestion
 
-## 🔗 Chaînes complètes (lecture rapide)
+**Given** le sous-menu de suggestions est ouvert
+**When** je clique `Débutant`
+**Then** `query="Débutant"`, `results` mis à jour, navigation vers `/search?query=Débutant`, le sous-menu se ferme.
 
-### Saisie → suggestions → choix
+### 5.5 — Reset rapide
 
-```
-NavInput.onChange("con")
-  → handleSearch
-     → searchQuery(menuData,"con") → suggestions[]
-     → setSubResultOpen(true) → SubResult visible
-SubResult.onClick("Avec Permis")
-  → handleSuggestionClick
-     → setQuery("Avec Permis")
-     → setResults(searchQuery(menuData,"Avec Permis"))
-     → setParam("query","Avec Permis")
-     → router.push("/search?query=Avec%20Permis")
-```
+**Given** j’ai une recherche saisie (ou soumise)
+**When** je clique l’icône **Close**
+**Then** input vidé, suggestions fermées, `results=[]`, suppression de `?query`/`?badKeyWord` de l’URL.
 
-### Validation directe (aucun résultat)
+### 5.6 — Aucune fermeture “fantôme”
 
-```
-RenderInput.onKeyDown(Enter)
-  → handleSubmit
-     → results = []
-     → router.push("/search?badKeyWord=abcdef")
-     → isSubmitted = true, bouton = Reset
-```
-
-### Reset
-
-```
-RenderInputButton.onClick()  // croix
-  → handleReset
-     → setQuery("")
-     → setResults([])
-     → deleteParam("query"/"badKeyWord")
-     → fermer SubResult
-```
+**Given** je clique dans la zone Recherche / Suggestions
+**When** je sélectionne une suggestion
+**Then** le menu **ne** se ferme pas avant l’action (grâce à `ref={navRef}` sur `<nav class="research">`), puis se nettoie proprement après.
 
 ---
 
-## 🧹 Nettoyage “doux” (safe, sans tout casser)
+## ⚙️ Contrats / Config
 
-1. **Centraliser les constantes**
-
-    - `const MIN_QUERY_LEN = 3;`
-    - `const SEARCH_ROUTE = "/search";`
-    - Clé URL : renommer `badKeyWord` → `badQuery` (ou `noResults`) pour homogénéiser (optionnel, prévoir compat).
-
-2. **API de navigation unifiée (optionnel)**
-
-    - Un helper `pushSearch({ query, hasResults })` qui **forme l’URL** et pousse le router (au lieu de dupliquer dans submit/suggestion).
-
-3. **Typage & signatures**
-
-    - Typages communs pour les **SearchItem**, **Suggestion** (déjà présents) et le **shape** des résultats.
-
-4. **A11y**
-
-    - Ajouter `role="listbox"` + `role="option"` sur `SubResult` (au lieu d’`<option>` sans `<select>`), ou utiliser une `<ul><li>` claire + aria.
-
-5. **Clic intérieur/extérieur**
-
-    - ⚠️ Vérifier que **le `<nav className="research">` reçoit aussi `ref={navRef}`** si tu veux **empêcher** le gestionnaire global de considérer les clics dans le champ comme “extérieur” (cf. ta **NOTE IMPORTANTE**).
-
-        - Dans `Nav.tsx`, on a :
-
-            - `<nav ref={navRef} className="main-nav">…` ✅
-            - `<nav className="research">…` ❌ (pas de `ref`)
-            - `<nav ref={navRef} className="connect">…` ✅
-
-        - **Recommandation** : `ref={navRef}` sur la recherche aussi, si la fermeture auto te gêne pendant la saisie.
-
-6. **Désimbrication CSS**
-
-    - L’input et SubResult dépendent des classes **`nav-circle/nav-padding`**. Si tu extrais le “moteur recherche”, expose un **prop** `compact`/`expanded` plutôt que d’importer ces classes utilitaires.
-
----
-
-## 📁 Fichiers & responsabilités (mémo)
-
--   `components/header/navInput/NavInput.tsx` → Orchestrateur de l’UI Recherche (input + bouton + suggestions).
--   `components/header/navInput/RenderInput.tsx` → Champ + animation différée + gestion Enter.
--   `components/header/navInput/RenderInputButton.tsx` → Loupe / Croix + submit/reset.
--   `components/header/navInput/SubResult.tsx` → Rendu des **suggestions**.
--   `components/header/navInput/useSearchHandler.tsx` → **Logique** (query, suggestions, submit, reset, URL).
--   `utils/searchMenu.ts` → Filtre la **data** (menu) selon une query.
--   `utils/searchUtils.ts` → `filterSuggestions`, `SearchItem`, autres utilitaires.
--   `utils/useURLParams.ts` → `setParam/deleteParam` sur l’URL.
--   `utils/context/SearchContext.tsx` → **Source de vérité** : `menuData`, `results`, `query`.
-
----
-
-Si c’est bon pour l’Étape 5, dis “ok” et je passe à **l’Étape 6 — Données & Contrats (`menuItems.ts`, `sections.ts`, `attachContentToMenu`)** pour verrouiller l’alignement ancres/IDs/offsets et préparer l’extraction du **moteur** hors styles.
-
----
-
-## 9) **Clic modifié (Ctrl/Cmd) — nouvel onglet**
-
-**Situation initiale**
-Le sous-menu **Tarifs** est ouvert.
-
-**Action**
-Je **Ctrl-clic** (ou **Cmd-clic**) sur **Confirmé**.
-
-**Résultat**
-
--   **NOUVEL onglet** avec `/p2#expert`.
--   Pas de scroll/capture parasite dans l’onglet courant.
-
-**Moteur (tech)**
-`isModifiedClick(e)` → on **n’empêche pas** le navigateur (pas de `preventDefault`).
+-   **Seuil suggestions** : 3 caractères (`handleSearch`)
+-   **Paramètres URL** : `?query=` | `?badKeyWord=`
+-   **`menuItems.search`** : id=`search`, svg=`Search`, path=`/search`
+-   **Accessibilité** : `option` cliquable dans `SubResult` (ok visuellement) ; si tu veux un HTML plus sémantique, **`<button>`** conviendrait mieux — non bloquant pour ton moteur.
 
 ---
 
@@ -1135,5 +952,3 @@ Je **Ctrl-clic** (ou **Cmd-clic**) sur **Confirmé**.
 -   [ ] **Recherche** : suggestions à ≥3 caractères, `?query=` / `?badKeyWord=` poussés, bouton reset OK.
 
 ---
-
-💡 Besoin que je te livre la **matrice de traçabilité** (Menu ↔ AnchorId ↔ SectionId ↔ Offset) ou une **spec Gherkin** prête à tester ? Je te la fais dans le même style, en 1 bloc, dès que tu veux.
