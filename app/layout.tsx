@@ -1,11 +1,12 @@
 import localFont from "next/font/local";
-import "../src/assets/styles/main.scss";
+import "@/src/assets/styles/main.scss";
 import { SearchProvider } from "@/src/utils/context/SearchContext";
+import { NavigationProvider } from "@/src/utils/context/NavigationContext";
 import { Suspense } from "react";
-import HeaderProps from "./headerProps";
-import ScrollProvider from "../src/utils/context/ScrollContext";
+import ScrollProvider from "@/src/utils/context/ScrollContext";
 import ScrollSectionsWrapper from "./ScrollSectionsWrapper";
 import Loader from "@/src/components/loader/Loader";
+import Header from "@/src/components/header/Header";
 // import MobileRedirect from "./MobileRedirect";
 
 export const RobotoFlex = localFont({
@@ -46,7 +47,9 @@ export default function RootLayout({
                             <Suspense fallback={<Loader />}>
                                 <header>
                                     <div className="content-wrapper">
-                                        <HeaderProps />
+                                        <NavigationProvider>
+                                            <Header />
+                                        </NavigationProvider>
                                     </div>
                                 </header>
                                 <main>{children}</main>
