@@ -1,5 +1,3 @@
-import type { Metadata } from "next";
-import metaData from "./metaData";
 import localFont from "next/font/local";
 import "../src/assets/styles/main.scss";
 import { SearchProvider } from "@/src/utils/context/SearchContext";
@@ -31,7 +29,6 @@ const Nunito = localFont({
     display: "swap",
 });
 
-export const metadata: Metadata = metaData;
 export default function RootLayout({
     children,
 }: Readonly<{
