@@ -10,18 +10,7 @@ const toRel = (p) => {
         : n.replace(/^\.\//, "");
     return norm(rel);
 };
-const IGNORE = [
-    "**/node_modules/**",
-    ".next/**",
-    "dist/**",
-    "build/**",
-    "coverage/**",
-    ".turbo/**",
-    "**/*.test.*",
-    "**/*.spec.*",
-    "**/*.stories.*",
-    "**/__tests__/**",
-];
+
 
 // Extensions prises en compte pour le graphe
 const EXTS = ["ts", "tsx", "js", "jsx", "mjs", "cjs"];
