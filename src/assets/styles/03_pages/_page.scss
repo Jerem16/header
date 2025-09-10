@@ -4,13 +4,7 @@
         div {
         }
     }
-    .fixed-menu {
-        height: calc(60px + 2rem);
-        width: 100vw;
-        transform-origin: top;
-        transform: scaleY(1);
-        transition: all 375ms ease-in-out;
-    }
+
     h2 {
         display: flex;
         flex-flow: row;
@@ -38,4 +32,11 @@
 #connexion {
     min-height: 100vh;
     background: rgb(255, 177, 33);
+}
+.fixed-menu {
+    height: calc(60px + 2rem);
+    width: 100vw;
+    transform-origin: top;
+    transform: scaleY(1);
+    transition: all 375ms ease-in-out;
 }

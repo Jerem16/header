@@ -3720,6 +3720,34 @@ __metadata:
   languageName: node
   linkType: hard
 
+"header@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "header@workspace:."
+  dependencies:
+    "@formspree/react": "npm:^2.5.1"
+    "@types/node": "npm:^20"
+    "@types/react": "npm:^18"
+    "@types/react-dom": "npm:^18"
+    constructs: "npm:^10.3.0"
+    esbuild: "npm:^0.23.1"
+    eslint: "npm:^9.15.0"
+    eslint-config-next: "npm:15.0.3"
+    fast-glob: "npm:^3.3.3"
+    madge: "npm:^8.0.0"
+    next: "npm:15.0.3"
+    react: "npm:^18.0.0"
+    react-dom: "npm:^18.0.0"
+    react-markdown: "npm:^10.1.0"
+    remark-gfm: "npm:^4.0.1"
+    sass: "npm:1.60.0"
+    sass-graph: "npm:^4.0.1"
+    sitemap: "npm:^8.0.0"
+    ts-prune: "npm:^0.10.3"
+    tsx: "npm:^4.19.0"
+    typescript: "npm:^5.6.2"
+  languageName: unknown
+  linkType: soft
+
 "html-url-attributes@npm:^3.0.0":
   version: 3.0.1
   resolution: "html-url-attributes@npm:3.0.1"
@@ -5633,34 +5661,6 @@ __metadata:
   checksum: 10c0/666f6973f332f27581371efaf303fd6c272cc43c2057b37aa99e3643158c7e4b2626549555d88626e99ea9e046f82f32e41bbde5f1508547e9a11b149b52387c
   languageName: node
   linkType: hard
-
-"peur-de-la-conduite@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "peur-de-la-conduite@workspace:."
-  dependencies:
-    "@formspree/react": "npm:^2.5.1"
-    "@types/node": "npm:^20"
-    "@types/react": "npm:^18"
-    "@types/react-dom": "npm:^18"
-    constructs: "npm:^10.3.0"
-    esbuild: "npm:^0.23.1"
-    eslint: "npm:^9.15.0"
-    eslint-config-next: "npm:15.0.3"
-    fast-glob: "npm:^3.3.3"
-    madge: "npm:^8.0.0"
-    next: "npm:15.0.3"
-    react: "npm:^18.0.0"
-    react-dom: "npm:^18.0.0"
-    react-markdown: "npm:^10.1.0"
-    remark-gfm: "npm:^4.0.1"
-    sass: "npm:1.60.0"
-    sass-graph: "npm:^4.0.1"
-    sitemap: "npm:^8.0.0"
-    ts-prune: "npm:^0.10.3"
-    tsx: "npm:^4.19.0"
-    typescript: "npm:^5.6.2"
-  languageName: unknown
-  linkType: soft
 
 "picocolors@npm:^1.0.0, picocolors@npm:^1.1.1":
   version: 1.1.1

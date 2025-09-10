@@ -1,9 +1,6 @@
 import React from "react";
-import SearchPageContent from "./SearchPageContent"; // Déplacez votre composant logique dans un fichier séparé.
-import { Metadata } from "next";
-export const metadata: Metadata = {
-    title: "Recherche",
-};
+import SearchPageContent from "./SearchPageContent";
+
 export default function Page() {
     return <SearchPageContent />;
 }

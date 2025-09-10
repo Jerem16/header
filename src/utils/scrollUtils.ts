@@ -16,7 +16,7 @@ import type { MenuItem, SubItem } from "@assets/data/interfaces/menu";
  * Détermine l'offset de défilement à appliquer.
  * Priorité : SubItem > MenuItem > 0.
  */
-export function resolveScrollOffset(
+function resolveScrollOffset(
     menuItem?: Pick<MenuItem, "scrollOffset">,
     subItem?: Pick<SubItem, "scrollOffset">
 ): number {

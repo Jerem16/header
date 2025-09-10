@@ -11,7 +11,10 @@ export default function SearchPageContent() {
     const { results, setResults, menuData, setQuery } = useSearch();
     const [validQuery, setValidQuery] = useState<string>("");
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const [storedSlideRef, setStoredSlideRef] = useSessionStorage<number>("slideRef", 0);
+    const [storedSlideRef, setStoredSlideRef] = useSessionStorage<number>(
+        "slideRef",
+        0
+    );
     const searchParams = useSearchParams();
     const badKeyWord = searchParams.get("badKeyWord");
     const queryFromUrl = searchParams.get("query");
@@ -48,7 +51,9 @@ export default function SearchPageContent() {
             (result, index, self) =>
                 index ===
                 self.findIndex(
-                    (r) => r.path === result.path && r.text.trim() === result.text.trim()
+                    (r) =>
+                        r.path === result.path &&
+                        r.text.trim() === result.text.trim()
                 )
         );
     }, [results]);
@@ -65,10 +70,16 @@ export default function SearchPageContent() {
                                 className="result-link"
                                 onClick={() => {
                                     if (result.go) {
-                                        const slideRef = result.go.split("=")[1]; // Extraction de `slideRef`
+                                        const slideRef =
+                                            result.go.split("=")[1]; // Extraction de `slideRef`
                                         setStoredSlideRef(result.slideRef); // Stockage dans le localStorage
-                                        const queryString = createQueryString("slideRef", slideRef);
-                                        router.push(`${result.path}?${queryString}`); // Navigation
+                                        const queryString = createQueryString(
+                                            "slideRef",
+                                            slideRef
+                                        );
+                                        router.push(
+                                            `${result.path}?${queryString}`
+                                        ); // Navigation
                                     } else {
                                         router.push(result.path);
                                     }

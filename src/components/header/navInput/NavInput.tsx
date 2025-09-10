@@ -11,7 +11,10 @@ interface NavInputProps {
     placeholder?: string;
     isOpen: boolean;
     showNavLinks: boolean;
-    onMenuToggle: (menuItemId: string, event?: React.MouseEvent | React.KeyboardEvent) => void;
+    onMenuToggle: (
+        menuItemId: string,
+        event?: React.MouseEvent | React.KeyboardEvent
+    ) => void;
     onMouseEnter: () => void;
     onFocus: () => void;
 }

@@ -20,7 +20,6 @@ interface RenderInputProps {
     handleSearch: (e: React.ChangeEvent<HTMLInputElement>) => void;
     onFocus: () => void;
 }
-export type SvgComponentKey = keyof typeof svgComponents;
 const RenderInput: React.FC<RenderInputProps> = ({
     isSubmitted,
     showNavLinks,
@@ -58,7 +57,9 @@ const RenderInput: React.FC<RenderInputProps> = ({
                             onKeyDown={(e) => {
                                 if (e.key === "Enter") {
                                     e.preventDefault();
-                                    handleSubmit(e as React.KeyboardEvent<HTMLInputElement>);
+                                    handleSubmit(
+                                        e as React.KeyboardEvent<HTMLInputElement>
+                                    );
                                 }
                             }}
                             className={`nav-link ${getShowClass(
