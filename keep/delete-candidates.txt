@@ -1,7 +1,0 @@
-.git/logs/refs/remotes/origin/codex/remove-arrow.jsx-and-checkedicon.jsx
-.git/refs/remotes/origin/codex/remove-arrow.jsx-and-checkedicon.jsx
-next.config.ts
-scripts/keep-functions.cjs
-scripts/keep-list.cjs
-src/utils/sessionStorage/useSessionStorage.tsx
-src/utils/useIsBrowser.ts

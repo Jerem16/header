@@ -39,8 +39,6 @@ function setScrollIntent(targetHash: string, offset = 0) {
     sessionStorage.setItem(SCROLL_INTENT_KEY, JSON.stringify({ id, offset }));
 }
 
-
-
 /*-------------------------------------------------------*/
 
 interface NavParams {
@@ -164,5 +162,45 @@ export function addNewUrl(currentSectionId: string) {
         if (window.location.hash !== newUrl) {
             window.history.replaceState(null, "", newUrl);
         }
+    }
+}
+export function exportTest(
+    currentTime: number,
+    start: number,
+    end: number,
+    duration: number,
+    startTime: number
+) {
+    const elapsed = currentTime - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    const easeInOutCubic =
+        progress < 0.5
+            ? 4 * progress * progress * progress
+            : 1 - Math.pow(-2 * progress + 2, 4) / 2;
+    window.scrollTo(0, start + (end - start) * easeInOutCubic);
+    if (progress < 1) {
+        window.requestAnimationFrame((newTime) =>
+            scrollTimeEvent(newTime, start, end, duration, startTime)
+        );
+    }
+}
+function test(
+    currentTime: number,
+    start: number,
+    end: number,
+    duration: number,
+    startTime: number
+) {
+    const elapsed = currentTime - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    const easeInOutCubic =
+        progress < 0.5
+            ? 4 * progress * progress * progress
+            : 1 - Math.pow(-2 * progress + 2, 4) / 2;
+    window.scrollTo(0, start + (end - start) * easeInOutCubic);
+    if (progress < 1) {
+        window.requestAnimationFrame((newTime) =>
+            scrollTimeEvent(newTime, start, end, duration, startTime)
+        );
     }
 }
