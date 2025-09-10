@@ -6,7 +6,6 @@ import HeaderProps from "./headerProps";
 import ScrollProvider from "../src/utils/context/ScrollContext";
 import ScrollSectionsWrapper from "./ScrollSectionsWrapper";
 import Loader from "@/src/components/loader/Loader";
-// import MobileRedirect from "./MobileRedirect";
 
 export const RobotoFlex = localFont({
     src: "/fonts/RobotoFlex.woff2",

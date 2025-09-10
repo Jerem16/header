@@ -9,7 +9,7 @@ try {
 } catch (_) {}
 
 const ROOT = process.cwd();
-const SCSS_ENTRY = path.join("src", "styles", "main.scss"); // <-- CHANGE si besoin
+const SCSS_ENTRY = path.join("src", "assets", "styles", "main.scss"); // <-- CHANGE si besoin
 const PROTECTED_GLOBS = [
     "app/**",
     "src/components/header/**",

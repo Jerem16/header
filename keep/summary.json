@@ -3,8 +3,8 @@
     "app/layout.tsx"
   ],
   "counts": {
-    "keep": 136,
-    "deleteCandidates": 21,
-    "totalScanned": 102
+    "keep": 137,
+    "deleteCandidates": 7,
+    "totalScanned": 89
   }
 }

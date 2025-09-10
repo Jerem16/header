@@ -105,6 +105,7 @@ src/components/header/utils/HiddenDelayComponent.tsx
 src/components/header/utils/menuUtils.ts
 src/components/header/utils/useResize.ts
 src/components/loader/Loader.jsx
+src/components/loader/_loader.scss
 src/components/svg_Icon/Blog.jsx
 src/components/svg_Icon/Connection.jsx
 src/components/svg_Icon/Contact.jsx
