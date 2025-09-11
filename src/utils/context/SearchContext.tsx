@@ -2,61 +2,61 @@
 
 // SearchContext.tsx
 import React, {
-    createContext,
-    useContext,
-    useState,
-    useEffect,
-    useMemo,
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  useMemo,
 } from "react";
-import { initializeMenuWithContent } from "../initializeMenu";
-import { MenuLinks } from "@assets/data/interfaces/menu";
+import { initializeMenuWithContent } from "@nav-utils/initializeMenu";
+import { MenuLinks } from "@nav-types/menu";
 
 // Définir le type pour SearchContext
 interface Result {
-    path: string;
-    text: string;
-    go: string;
-    slideRef: number;
+  path: string;
+  text: string;
+  go: string;
+  slideRef: number;
 }
 
 interface SearchContextType {
-    results: Result[];
-    setResults: (results: Result[]) => void;
-    menuData: MenuLinks | null;
-    query: string; // Ajouter query
-    setQuery: (query: string) => void; // Ajouter setQuery
+  results: Result[];
+  setResults: (results: Result[]) => void;
+  menuData: MenuLinks | null;
+  query: string; // Ajouter query
+  setQuery: (query: string) => void; // Ajouter setQuery
 }
 
 const SearchContext = createContext<SearchContextType | undefined>(undefined);
 
 export const SearchProvider: React.FC<{ children: React.ReactNode }> = ({
-    children,
+  children,
 }) => {
-    const [results, setResults] = useState<Result[]>([]);
-    const [menuData, setMenuData] = useState<MenuLinks | null>(null);
-    const [query, setQuery] = useState(""); // Ajout de query ici
+  const [results, setResults] = useState<Result[]>([]);
+  const [menuData, setMenuData] = useState<MenuLinks | null>(null);
+  const [query, setQuery] = useState(""); // Ajout de query ici
 
-    useEffect(() => {
-        const data = initializeMenuWithContent();
-        setMenuData(data);
-    }, []);
+  useEffect(() => {
+    const data = initializeMenuWithContent();
+    setMenuData(data);
+  }, []);
 
-    const contextValue: SearchContextType = useMemo(
-        () => ({ results, setResults, menuData, query, setQuery }), // Passer query et setQuery
-        [results, setResults, menuData, query] // Ajouter query comme dépendance
-    );
+  const contextValue: SearchContextType = useMemo(
+    () => ({ results, setResults, menuData, query, setQuery }), // Passer query et setQuery
+    [results, setResults, menuData, query], // Ajouter query comme dépendance
+  );
 
-    return (
-        <SearchContext.Provider value={contextValue}>
-            {children}
-        </SearchContext.Provider>
-    );
+  return (
+    <SearchContext.Provider value={contextValue}>
+      {children}
+    </SearchContext.Provider>
+  );
 };
 
 export const useSearch = (): SearchContextType => {
-    const context = useContext(SearchContext);
-    if (!context) {
-        throw new Error("useSearch must be used within a SearchProvider");
-    }
-    return context;
+  const context = useContext(SearchContext);
+  if (!context) {
+    throw new Error("useSearch must be used within a SearchProvider");
+  }
+  return context;
 };

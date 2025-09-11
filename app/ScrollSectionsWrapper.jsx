@@ -2,12 +2,12 @@
 "use client";
 
 import React from "react";
-import { useScrollAnchors } from "../src/utils/scrollUtils";
-import { sections } from "../src/assets/data/sections";
+import { useScrollAnchors } from "@nav-utils/scrollUtils";
+import { sections } from "@nav-data/sections";
 
 const ScrollSectionsWrapper = ({ children }) => {
-    useScrollAnchors(sections);
-    return <>{children}</>;
+  useScrollAnchors(sections);
+  return <>{children}</>;
 };
 
 export default ScrollSectionsWrapper;
